@@ -30,7 +30,7 @@ if not SMARTTHINGS_API_KEY:
 KEY = "Bearer " + SMARTTHINGS_API_KEY
 
 # Influx configuration
-INFLUX_HOST = os.getenv("INFLUX_NAME", "localhost")
+INFLUX_HOST = os.getenv("INFLUX_HOSTNAME", "localhost")
 INFLUX_DATABASE = os.getenv("INFLUX_DATABASE", "SmartThings")
 
 

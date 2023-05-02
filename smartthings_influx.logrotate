@@ -1,0 +1,11 @@
+/var/log/smartthings_influx.log {
+	weekly
+	missingok
+	rotate 7
+	postrotate
+		systemctl restart smartthings_influx
+	endscript
+	compress
+	delaycompress
+	notifempty
+}
