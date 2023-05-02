@@ -1,0 +1,32 @@
+# systemd unit file for the (python-based) smartthings_influx service
+
+
+[Unit]
+
+# Human readable name of the unit
+Description=SmartThings InfluxDB integration
+
+[Service]
+
+# Command to execute when the service is started
+ExecStart=/usr/bin/python3 /usr/local/src/smarthings_influx/smartthings_influx.py
+
+# Set environment variables (including SMARTTHINGS_API_KEY, a required value) from a file
+EnvironmentFile=/etc/default/smartthings_influx
+
+# Disable Python's buffering of STDOUT and STDERR, so that output from the
+# service shows up immediately in systemd's logs
+Environment=PYTHONUNBUFFERED=1
+
+# Automatically restart the service if it crashes
+Restart=on-failure
+
+Type=simple
+
+#User=smartthings_influx
+
+StandardOutput=append:/var/log/smartthings_influx.log
+
+
+[Install]
+WantedBy=multi-user.target
